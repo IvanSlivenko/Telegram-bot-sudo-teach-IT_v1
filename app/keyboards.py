@@ -10,7 +10,7 @@ from aiogram.utils.keyboard import InlineKeyboardBuilder
 
 main_keyboard = ReplyKeyboardMarkup(
     keyboard=[
-        [KeyboardButton(text="Технічні дії")],
+        [KeyboardButton(text="Технічні дії Дзюдо")],
         [KeyboardButton(text="Розклад")],
         [KeyboardButton(text="Контакти"), KeyboardButton(text="Про нас")],
     ],
@@ -34,10 +34,16 @@ async def items(category_id):
     kb_items = InlineKeyboardBuilder()
     
     for item in all_items:
-        kb_items.add(InlineKeyboardButton(text=f'{item.name}', 
-                                               callback_data=f'{item.id}'))
+        kb_items.add(InlineKeyboardButton(text=item.name, 
+                                               callback_data=f'item_{item.id}'))
     kb_items.add(InlineKeyboardButton(text='На головну',
                                            callback_data='to_main'))
-    return kb_items.adjust(2).as_markup()#----------------------------------adjust(2) -  
+    return kb_items.adjust(2).as_markup()#----------------------------------adjust(2) - 
+
+async def to_main():
+    kb_to_main = InlineKeyboardBuilder()
+    kb_to_main.add(InlineKeyboardButton(text='На головну',
+                                           callback_data='to_main'))
+    return kb_to_main.adjust(1).as_markup()#----------------------------------adjust(2) -   
 
     
