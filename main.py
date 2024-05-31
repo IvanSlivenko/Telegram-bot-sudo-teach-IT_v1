@@ -3,6 +3,7 @@ from aiogram import Bot, Dispatcher, F
 
 from config import TOKEN
 from app.handlers import router
+from app.database.models import async_main
 
 #------------------------------------- Створення бота
 # bot = Bot(TOKEN)
@@ -15,6 +16,7 @@ from app.handlers import router
 
 #------------------------------------ Запуск бота
 async def main():
+    await async_main()
     bot = Bot(TOKEN)
     dp = Dispatcher()
 

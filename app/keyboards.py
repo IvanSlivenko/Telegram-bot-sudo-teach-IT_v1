@@ -32,8 +32,8 @@ catalog = InlineKeyboardMarkup(
 
 get_number = ReplyKeyboardMarkup(
     keyboard=[
-        [KeyboardButton(text="Відправити номер",request_contact=True)]
+        [KeyboardButton(text="Відправити номер", request_contact=True)]
     ],
     resize_keyboard=True,
-    input_field_placeholder="Для відправки номера телефону натисніть на цю кнопку",
+    input_field_placeholder="Для відправки номера телефону натисніть на цю кнопку 👇",
 )

@@ -1,17 +1,28 @@
+Part 1
 https://youtu.be/7mdyOUjECP0?list=PLV0FNhq3XMOJ31X9eBWLIZJ4OVjBwb-KM
+
 
 python - m venv venv
 venv\Scripts\activate
 
 pip install aiogram
 
-
 judo uman = name
 judoumanBot = user_name
 token = 7465737748:AAH4AtQX_f2ch-23UJZp9jMYkEkL0DaAF50
 
 
-
-
-
 50 : 22
+
+
+-----------------------------------------------------------------------------------------------
+Part 2
+
+https://youtu.be/5aARIkjY7H8?list=PLV0FNhq3XMOJ31X9eBWLIZJ4OVjBwb-KM
+
+
+pip install sqlalchemy
+pip install aiosqlite
+
+26 : 52
+

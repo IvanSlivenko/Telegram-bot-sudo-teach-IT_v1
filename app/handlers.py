@@ -6,6 +6,7 @@ from aiogram.fsm.context import FSMContext
 
 from app import keyboards
 from states.states import Register
+import app.database.requests as rq
 
 
 router = Router()
@@ -13,8 +14,13 @@ router = Router()
 
 @router.message(CommandStart())
 async def cmd_start(message: Message):
+    await rq.set_user(message.from_user.id)#-------додаємо користувача в базу данних
     await message.answer(f'Привіт : {message.from_user.first_name}', reply_markup=keyboards.main_keyboard)
+
+
 #     # await message.reply('Як справи')
+
+
 
 
 @router.message(or_f(
@@ -49,9 +55,10 @@ async def register_age(message: Message, state: FSMContext):
 async def register_number(message: Message, state: FSMContext):
     await state.update_data(number=message.contact.phone_number)
     data = await state.get_data()
-    await message.answer(f"Ваше ім'я :{data["name"]}\n\
+    await message.answer(f" Ваше ім'я : {data["name"]}\n\
                             Ваш вік : {data["age"]}\n\
-                            Ваш номер телефону : {data["number"]}")
+                            Ваш номер телефону : \n\
+                            {data["number"]}")
     
     await state.clear()#--------------------------- очищаємо state
         
@@ -72,7 +79,7 @@ async def the_rack(callback: CallbackQuery):
   
 
 @router.callback_query(F.data == 'wrestling on the ground floor')
-async def the_rack(callback: CallbackQuery):
+async def ground_floor(callback: CallbackQuery):
     await callback.answer('Ви обрали розділ', show_alert=True)
     await  callback.message.answer(f'Ви обрали розділ : Боротьба у партері')    
 
